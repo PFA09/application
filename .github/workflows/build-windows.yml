@@ -1,0 +1,28 @@
+name: 'Build Windows'
+on: [push, pull_request]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Tauri app
+        run: npm run tauri build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-app
+          path: src-tauri/target/release/bundle/
