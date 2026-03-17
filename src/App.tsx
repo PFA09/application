@@ -46,6 +46,7 @@ function App() {
         duration: 3000,
         icon: '🎉',
       });
+
       await loadRecordings();
     } catch (error) {
       console.error('Erreur sauvegarde:', error);
@@ -61,7 +62,7 @@ function App() {
       await invoke('delete_recording', { filepath: path });
       toast.success('🗑️ Fichier supprimé');
       await loadRecordings();
-   } catch (error) {
+    } catch (error) {
       console.error('Erreur suppression:', error);
       toast.error('❌ Erreur lors de la suppression');
     }
@@ -117,7 +118,6 @@ function App() {
         </div>
       </div>
 
-      {/* Grille avec plus d'espacement */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
         {/* Colonne enregistreur */}
         <div className="flex justify-center">
@@ -143,11 +143,11 @@ function App() {
                 Vos enregistrements
               </h2>
 
-              {/* Groupe des boutons dossier + rafraîchir */}
-              <div className="flex gap-3">
+              {/* ✅ FIX ICI */}
+              <div className="flex items-center gap-3 flex-nowrap">
                 <button
                   onClick={handleOpenRecordingsFolder}
-                  className="button-secondary"
+                  className="button-secondary flex items-center gap-2 whitespace-nowrap"
                   title="Ouvrir le dossier"
                 >
                   <span className="text-2xl">📁</span>
@@ -156,7 +156,7 @@ function App() {
 
                 <button
                   onClick={loadRecordings}
-                  className="action-button refresh"
+                  className="action-button refresh flex items-center justify-center px-4 whitespace-nowrap"
                   title="Rafraîchir la liste"
                 >
                   🔄
