@@ -13,13 +13,11 @@ interface Recording {
 interface RecordingsListProps {
   recordings: Recording[];
   onDelete: (path: string) => Promise<void>;
-  onRefresh: () => Promise<void>;
 }
 
 export const RecordingsList: React.FC<RecordingsListProps> = ({
   recordings,
   onDelete,
-  onRefresh,
 }) => {
   const [playingPath, setPlayingPath] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
