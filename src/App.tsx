@@ -167,7 +167,6 @@ function App() {
             <RecordingsList
               recordings={recordings}
               onDelete={handleDelete}
-              onRefresh={loadRecordings}
             />
           </div>
         </div>
